@@ -1,0 +1,101 @@
+package bank.management.system;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class Login extends JFrame implements ActionListener
+{
+  setLayout(null);
+ JButton login,signup, clear;
+ JTextField cardTextField;
+ JPasswordField pinTextField;
+ Login()
+{
+   JLabel text=new JLabel("Welcome to ATM");
+   text.setBounds(200,40,400,40);
+   text.setFont(new Font("Arial",Font.BOLD,38));
+   add(text);
+   
+   JLabel cardno=new JLabel("Card Number");
+   cardno.setBounds(120,150,400,40);
+   cardno.setFont(new Font("Arial",Font.BOLD,38));
+   add(cardno);
+    
+   cardText=new JTextField();
+   cardText.setBounds(300,150,250,30);
+   cardText.setFont(new Font("Arial",Font.BOLD,38));
+   add(cardtext);
+   
+   JLabel pin=new JLabel("Pin");
+   pin.setBounds(120,220,400,40);
+   pin.setFont(new Font("Arial",Font.BOLD,38));
+   add(pin);
+   
+    pinText=new JTextField();
+   pinText.setBounds(300,220,250,30);
+   pinText.setFont(new Font("Arial",Font.BOLD,38));
+   add(pinText);
+
+   login=new JButton("log in");
+   login.setBounds(300,300,100,30);
+   login.addActionListener(this);
+   add(login);
+     
+   
+   signup=new JButton("sign up");
+   signup.setBounds(300,350,230,30);
+   signup.addActionListener(this);
+   add(signup);
+
+   clear=new JButton("clear");
+   clear.setBounds(430,300,100,30);
+   clear.addActionListener(this);
+   add(clear);
+   
+   getContentPane().setBackground(Color.WHITE);
+   setlayout(null);
+   setVisible(true);
+   setSize(800,480);
+   setLocation(350,200);
+   setTitle("Banking system");
+  }
+ public void actionperformed(ActionEvent e)
+{
+  if(e.getsource()==clear)
+{
+  cardText.setText("");
+  pinText.setText("");
+}
+else if(e.getsource()==login)
+{
+  Conn conn=new Conn();
+  String cardnumber=cardText.getText();
+  String pinnumber=pinText.getText();
+  String query="select * from login where cardnumber='"+cardnumber+ and pin=""+pinnumber+"";
+ try
+ { 
+   ResultSet r=conn.s.executeQuery(query);
+   if(r=next())
+  {
+     setVisible(false);
+     new Transaction(pinnumber).setVisible(true);
+   }
+    else
+   {
+      JOptionPane.showMessageDialog(null,"Incorrect card number or pin");
+    }
+  catch(Exception ae)
+   { 
+     System.out.println(e);
+    }
+   } 
+  else if(e.getsource()=sign up)
+  {
+    setvisible(false);
+    new Signupone=setVisible(true);
+}
+}
+public static Void main(String args[])
+{
+  new Login();
+}
+}

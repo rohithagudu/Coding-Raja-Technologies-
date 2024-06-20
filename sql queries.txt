@@ -1,0 +1,25 @@
+create database bankmanagementsystem;
+show databases;
+use bamkmanagementsystem;
+
+create table signupone(formno varchar(20),name varchar(20),fname varchar(20),dob varchar(20),gender varchar(10),email varchar(20),martial varchar(5),address varchar(40),city varchar(90),pincode number(10),state varchar(20));
+
+show tables;
+
+select * from signupone;
+  create table signuptwo(formno varchar(20),religion varchar(20),category varchar(20),income varchar(20),education varchar(20),occupation varchar(20));
+
+ select * from signuptwo;
+
+ create table signupthree(formno varchar(20),type varchar(20),cardnumber varchar(20),pinnumber varchar(20),service varchar(20));
+
+create table login(formno varchar(20),cardnumber varchar(20),pin varchar(20));
+
+ select * from signupthree;
+
+ select * from login;
+
+ drop table bank;
+
+ create table bank(pin varchar(20),date varchar(20),type varchar(20),amount varchar(20));
+

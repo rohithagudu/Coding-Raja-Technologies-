@@ -1,0 +1,119 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+import java.util.Date*;
+public class Fastcash extends JFrame implements ActionListener
+{
+ JButton deposit,withdraw,exit,mini statement,pinchange,balance,fast cash;
+ String pnum;
+ Fastcash(pnum)
+{
+ setLayout(null);
+ this.pnum=pnum;
+ ImageIcon i1=new ImgeIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
+ Image i2=i1.getImage().getScaledInstance(900,900,Image.SCALE_DEFAULT);
+ ImageIcon i3=new ImageIcon(i2);
+ JLabel image=new JLabel(i3);
+ image.setbounds(0,0,900,900);
+ add(image);
+
+ JLabel text=new JLabel("please select withdrawal amount");
+ text.setBounds(210,300,700,35);
+ text.setFont(new Font("Arial",Font.BOLD,38));
+ text.setForehead(Color.WHITE);
+ image.add(text);
+ 
+ Fastcash=new JButton("Rs 100");
+ Fastcash.setBounds(170,415,150,30);
+ image.addActionListener(this);
+ image.add(Fastcash);
+
+ withdraw=new JButton("Rs 500");
+ withdraw.setBounds(355,415,150,30);
+ image.addActionListener(this);
+ image.add(withdraw);
+
+
+ balance=new JButton("Rs 1000");
+ balance.setBounds(170,415,150,30);
+ image.addActionListener(this);
+ image.add(balance);
+
+ pinchange=new JButton("Rs 2000");
+ pinchange.setBounds(170,485,150,30);
+ image.addActionListener(this);
+ image.add(pinchange);
+
+ ministatement=new JButton(" Rs 5000");
+  ministatement.setBounds(355,450,150,30);
+ image.addActionListener(this);
+ image.add( ministatement);
+ 
+ fastcash=new JButton("Rs 10000");
+  fastcash.setBounds(170,450,150,30);
+ image.addActionListener(this);
+ image.add(fastcash);
+
+  exit=new JButton("Back");
+  exit.setBounds(355,520,150,30);
+ image.addActionListener(this);
+ image.add(exit);
+ 
+  setSize(900,900);
+  setLocation(300,0);
+  setUnderdecor(true);
+  setVisible(true);
+}
+public actionperformed(ActionEvent ae)
+{
+  if(ae.getSource()==back)
+{
+ setVisib;e(false);
+ new Transaction(pnum).setVisible(true);
+}
+else {
+      String amount=((JButton)ae.getSource()).getText().substring(3);
+Conn conn=new Conn();
+try
+{
+  ResultSet rs=c.s.xecuteQuery("select+from bamk where pin=");
+int balance=0;
+while(rs.next())
+{
+ if(rs.getString("type").equals("Deposit))
+{
+  balance+=Integer.parseInt(rs.getString("amount"));
+ }
+else
+{
+ balance-=Integer.parseInt(rs.getString("amount"));
+}
+}
+if(ae.getSource!=exit && balance<Integer,parseInt(amount));{
+  JOptionPane.showMessageDialog(nukk,"Insufficent balance");
+return;
+}
+Date date=new Date();
+String query='insert into bank values('"+pnum+'","'date+'",'wuthdraw+'");
+c.c.executeUpdate(query);
+JOptionPane.showMessageDialog(null,"successfully debited");
+  setVisible(false);
+new Transaction(pnum).setVisible(true);
+
+}
+catch(Exception e)
+{
+ System.out.println(e);
+}
+}
+}
+public static void main(String args[])
+{
+ new Fastcash();
+}
+}
+
+
+
+ 
